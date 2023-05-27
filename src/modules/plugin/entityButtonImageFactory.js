@@ -250,6 +250,25 @@ export class EntityConfigFactory {
             return customizableDefaultConfig;
         },
 
+        "precipitation": (state, attributes, templates) => {
+            const icon = Mdi.mdiWater;
+            let color = "#3f3fdb";
+
+            state = Math.round(state * 100) / 100.0
+
+            if (!templates) {
+                templates = [" ", " ", "{{state}}{{unit_of_measurement}}"]
+            }
+
+            return {
+                state,
+                attributes,
+                templates,
+                icon,
+                color
+            }
+        },
+
     }
 
     weather = {
