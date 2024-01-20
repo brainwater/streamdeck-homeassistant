@@ -64,6 +64,17 @@
         </b-form-select>
       </b-form-group>
 
+      <b-form-group
+          label="Rounding"
+          label-for="rounding"
+          description="The number of decimal places you want to display for numeric values">
+        <b-form-input size="sm" id="rounding" v-model.number="rounding"
+                       :options="domainEntities"
+                       text-field="title"
+                       value-field="rounding">
+        </b-form-input>
+      </b-form-group>
+
       <b-form-checkbox
           size="sm"
           id="chkButtonTitle"
@@ -165,6 +176,7 @@ export default {
 
       domain: "",
       entity: "",
+      rounding: 0,
 
       serviceShortPress: {},
       serviceLongPress: {},
@@ -220,6 +232,7 @@ export default {
 
         this.domain = settings["display"]["domain"]
         this.entity = settings["display"]["entityId"]
+        this.rounding = settings["display"]["rounding"]
         this.enableServiceIndicator = settings["display"]["enableServiceIndicator"] || settings["display"]["enableServiceIndicator"] === undefined;
         this.hideIcon = settings["display"]["hideIcon"];
         this.useCustomTitle = settings["display"]["useCustomTitle"]
@@ -326,6 +339,7 @@ export default {
         display: {
           domain: this.domain,
           entityId: this.entity,
+          rounding: this.rounding,
           useCustomTitle: this.useCustomTitle,
           buttonTitle: this.buttonTitle,
           enableServiceIndicator: this.enableServiceIndicator,
